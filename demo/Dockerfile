@@ -5,9 +5,9 @@ COPY run.sh run.sh
 RUN chmod +x run.sh
 
 RUN apt-get update
-RUN apt-get install default-jre --assume-yes
-RUN apt-get install default-jdk --assume-yes
-RUN apt-get install zip --assume-yes
+RUN apt-get install default-jre -y --force-yes
+RUN apt-get install default-jdk -y --force-yes
+RUN apt-get install zip -y --force-yes
 
 ENV JPDA_ADDRESS="8000"
 ENV JPDA_TRANSPORT="dt_socket"

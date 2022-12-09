@@ -19,7 +19,7 @@ services:
    ports:
      - 8002:8000
    environment:
-     - JAVA_BACKEND=http://java-servelet-app/demo
+     - JAVA_BACKEND=http://java-servelet-app/
    networks:
      - app-network
    depends_on:
