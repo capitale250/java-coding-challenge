@@ -1,6 +1,7 @@
 
-
+import userClasses.userlisting;
 import java.io.BufferedReader;
+import Helpers.RequestData;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Datastore.datastore1;
 
 /**
  * Servlet implementation class UserList
@@ -44,14 +47,14 @@ public class UserList extends HttpServlet {
 
 	            BufferedReader br = req.getReader();
 
-	            JsonObject jsonObject= login.jsonBody(br);
-	            userlisting userw =new userlisting();
+	            JsonObject jsonObject= RequestData.jsonBody(br);
+	            userlisting uselist =new userlisting();
 	          
 	            
-	            JsonObject usr=userw.listusers(jsonObject,login.hm );
+	            JsonObject usrlists=uselist.listusers(jsonObject,datastore1.store );
 //	          
 	          
-	            out.println(usr);
+	            out.println(usrlists);
 	            out.flush();
 	            out.close();
 	        }

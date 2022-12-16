@@ -14,6 +14,8 @@ export class User{
    }
    static AllUser=async (req,res)=>{
         const apiResp= await axios.post(`${process.env.JAVA_BACKEND}/UserList`, req.body)
+        console.log(apiResp)
+
         res.send(apiResp.data)        
    }
    static Allsheetdata=async (req,res)=>{

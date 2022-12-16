@@ -1,4 +1,11 @@
 
+import userClasses.Physician;
+import userClasses.Pfarmaciest;
+import userClasses.Patient;
+import userClasses.admin;
+import userClasses.User;
+import Helpers.RequestData;
+import Datastore.datastore1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,7 +52,7 @@ public class Signup extends HttpServlet {
 
 
             BufferedReader br = req.getReader();
-            JsonObject jsonObject= login.jsonBody(br);
+            JsonObject jsonObject= RequestData.jsonBody(br);
 
             enum Users {
             	Pharmacis,
@@ -55,23 +62,23 @@ public class Signup extends HttpServlet {
             	}
             switch(Users.valueOf(jsonObject.getString("Role"))) {
               case Pharmacis:
-            	  Pfarmaciest userw =new Pfarmaciest();
-            	  JsonObject pharmacie =userw.signup(jsonObject,login.hm);
+            	  User pharmUser =new Pfarmaciest();
+            	  JsonObject pharmacie =pharmUser.signup(jsonObject,datastore1.store);
             	  out.println(pharmacie);
             	  break;
               case Patient:
-            	  Patient userp =new Patient();
-            	  JsonObject patientInfo =userp.signup(jsonObject,login.hm);
+            	  User patientUser =new Patient();
+            	  JsonObject patientInfo =patientUser.signup(jsonObject,datastore1.store);
             	  out.println(patientInfo);
             	  break;
               case Physician:
-            	  Physician userphy =new Physician();
-            	  JsonObject physicianInfo =userphy.signup(jsonObject,login.hm);
+            	  User userphy =new Physician();
+            	  JsonObject physicianInfo =userphy.signup(jsonObject,datastore1.store);
             	  out.println(physicianInfo);
             	  break;
               case Admin:
-            	  admin userAdmin =new admin();
-            	  JsonObject userAdminInfo=userAdmin.signup(jsonObject,login.hm);
+            	  User userAdmin =new admin();
+            	  JsonObject userAdminInfo=userAdmin.signup(jsonObject,datastore1.store);
             	  out.println(userAdminInfo);
             	  break;
 			default:

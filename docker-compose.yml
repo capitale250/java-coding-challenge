@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
  java-servelet-app:
     build:
@@ -14,7 +14,7 @@ services:
    ports:
      - 8002:8000
    environment:
-     - JAVA_BACKEND=http://java-servelet-app/demo/login
+     - JAVA_BACKEND=http://java-servelet-app:8081/demo/
    networks:
      - app-network
    depends_on:
@@ -25,7 +25,7 @@ services:
    ports:
      - 3005:3000
    environment:
-     - REACT_APP_BACKEND_URL=http://node-web-app/
+     - REACT_APP_BACKEND_URL=http://node-web-app:8002
      - REACT_APP_Pharmacis=Pharmacis
      - REACT_APP_ADMIN_ROLE=Admin
    networks:

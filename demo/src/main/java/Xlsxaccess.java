@@ -30,7 +30,6 @@ public class Xlsxaccess  {
 	
 	URL path = Xlsxaccess.class.getResource("MedicalData.xlsx");
 	File f = new File(path.getFile());
-	System.out.println(f+"uuuuuuuu");
 	try {
 		fis = new FileInputStream(f);
 	} catch (FileNotFoundException e) {
@@ -54,10 +53,10 @@ public class Xlsxaccess  {
 		if (j == 1) {
 	       
 	    for (int k = 0; k < row1.getLastCellNum(); k++) {
-	    	double a=row1.getCell(k).getNumericCellValue();
-	    	int s2 =(int)a;
-	    	String s=String.valueOf(s2);
-	        headers.add("b"+s+"b");
+	    	double doubleNumberHeader=row1.getCell(k).getNumericCellValue();
+	    	int intNumberHeader =(int)doubleNumberHeader;
+	    	String StringHeader=String.valueOf(intNumberHeader);
+	        headers.add("b"+StringHeader+"b");
 	    }
 	} else {
 	
